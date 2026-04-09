@@ -1,0 +1,197 @@
+/* ═══════════════════════════════════════════════
+   plans-modal.css  –  Modal de suscripciones
+   ═══════════════════════════════════════════════ */
+
+/* ── Overlay ── */
+.plans-overlay {
+  position: fixed; inset: 0; z-index: 1000;
+  background: rgba(0,0,0,0.72); backdrop-filter: blur(8px);
+  display: none; align-items: center; justify-content: center;
+  padding: 20px;
+}
+.plans-overlay.open { display: flex; }
+
+/* ── Modal shell ── */
+.plans-modal {
+  background: var(--bg-card);
+  border: 1px solid var(--border-bright);
+  border-radius: 28px;
+  width: 100%; max-width: 920px;
+  animation: plans-in 0.32s cubic-bezier(0.34,1.4,0.64,1) both;
+  position: relative;
+  /* Sin max-height ni overflow-y: todo cabe sin scroll */
+  padding: 36px 40px 40px;
+}
+
+@keyframes plans-in {
+  from { transform: scale(0.93) translateY(24px); opacity: 0; }
+  to   { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* ── Botón cerrar ── */
+.plans-close {
+  position: absolute; top: 18px; right: 20px;
+  background: var(--bg-glass); border: 1px solid var(--border);
+  border-radius: 8px; width: 32px; height: 32px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text-muted); cursor: pointer; font-size: 14px;
+  transition: all 0.15s;
+}
+.plans-close:hover { background: var(--bg-glass-hover); color: var(--text); }
+
+/* ── Encabezado ── */
+.plans-header {
+  text-align: center; margin-bottom: 24px;
+}
+.plans-header h2 {
+  font-family: var(--font-head); font-size: 24px; font-weight: 900;
+  color: var(--text); letter-spacing: -0.5px; margin-bottom: 6px;
+}
+.plans-header p { font-size: 13px; color: var(--text-muted); }
+
+/* ── Toggle facturación ── */
+.billing-toggle {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 24px;
+}
+.billing-toggle span { font-size: 13px; color: var(--text-muted); font-weight: 600; }
+.billing-toggle span.active { color: var(--text); }
+
+.toggle-switch {
+  width: 44px; height: 24px; border-radius: 99px;
+  background: var(--brand); border: none; cursor: pointer;
+  position: relative; transition: background 0.2s; flex-shrink: 0;
+}
+.toggle-switch::after {
+  content: ''; position: absolute; top: 3px; left: 3px;
+  width: 18px; height: 18px; border-radius: 50%;
+  background: #fff; transition: transform 0.2s;
+}
+.toggle-switch.annual::after { transform: translateX(20px); }
+
+.save-badge {
+  background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3);
+  color: #34d399; font-size: 10px; font-weight: 700;
+  padding: 2px 8px; border-radius: 20px; letter-spacing: 0.5px;
+}
+
+/* ── Grid de cards ── */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+/* ── Card individual ── */
+.plan-card {
+  background: var(--bg-deep);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 22px 22px 20px;
+  display: flex; flex-direction: column; gap: 16px;
+  position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.plan-card:hover { transform: translateY(-2px); }
+.plan-card.current { border-color: var(--border-glow); }
+.plan-card.popular {
+  border-color: var(--border-glow);
+  background: linear-gradient(160deg, rgba(124,58,237,0.08), var(--bg-deep));
+}
+.plan-card.elite-card {
+  border-color: rgba(250,204,21,0.3);
+  background: linear-gradient(160deg, rgba(250,204,21,0.05), var(--bg-deep));
+}
+
+/* Línea de acento superior */
+.plan-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  border-radius: 20px 20px 0 0;
+}
+.plan-card.plan-free-card::before { background: var(--border-bright); }
+.plan-card.popular::before        { background: linear-gradient(90deg, var(--brand), var(--accent)); }
+.plan-card.elite-card::before     { background: linear-gradient(90deg, #facc15, #fb923c); }
+
+/* ── Badge wrap ── */
+.plan-badge-wrap {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+}
+.plan-name-badge {
+  font-size: 10px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: 1.5px; padding: 3px 10px; border-radius: 20px;
+}
+.badge-free  { background: rgba(255,255,255,0.06); color: var(--text-muted); border: 1px solid var(--border); }
+.badge-pro   { background: rgba(124,58,237,0.15);  color: var(--brand-light); border: 1px solid var(--border-glow); }
+.badge-elite { background: rgba(250,204,21,0.12);  color: #facc15; border: 1px solid rgba(250,204,21,0.3); }
+
+.badge-current {
+  font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+  background: rgba(52,211,153,0.12); color: #34d399; border: 1px solid rgba(52,211,153,0.3);
+}
+.badge-popular {
+  font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 20px;
+  background: rgba(124,58,237,0.15); color: var(--brand-light); border: 1px solid var(--border-glow);
+}
+
+/* ── Precio ── */
+.plan-price {
+  display: flex; align-items: flex-end; gap: 4px;
+  font-family: var(--font-head);
+}
+.plan-price .amount {
+  font-size: 34px; font-weight: 900; color: var(--text);
+  letter-spacing: -1px; line-height: 1;
+}
+.plan-price .period { font-size: 13px; color: var(--text-muted); padding-bottom: 4px; }
+.plan-price-annual  { font-size: 11px; color: var(--text-subtle); margin-top: 2px; }
+.plan-desc          { font-size: 12px; color: var(--text-muted); line-height: 1.55; }
+
+/* ── Features list ── */
+.plan-features {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 9px;
+  flex: 1;
+}
+.plan-features li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 12px; color: var(--text-muted); line-height: 1.4;
+}
+.plan-features li i { font-size: 10px; margin-top: 2px; flex-shrink: 0; }
+.feat-on  { color: #34d399; }
+.feat-off { color: var(--border-bright); }
+
+/* ── CTA ── */
+.plan-cta {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 20px; border-radius: 12px;
+  font-family: var(--font-body); font-size: 13px; font-weight: 700;
+  cursor: pointer; border: none; text-decoration: none;
+  transition: all 0.15s; width: 100%; margin-top: auto;
+}
+.cta-current {
+  background: rgba(52,211,153,0.1); color: #34d399;
+  border: 1px solid rgba(52,211,153,0.3); cursor: default;
+}
+.cta-soon {
+  background: var(--bg-glass); color: var(--text-muted);
+  border: 1px solid var(--border); cursor: not-allowed; opacity: 0.7;
+}
+
+/* ── Scrollbar elegante (sólo si el viewport es muy pequeño) ── */
+.plans-modal::-webkit-scrollbar       { width: 4px; }
+.plans-modal::-webkit-scrollbar-track { background: transparent; }
+.plans-modal::-webkit-scrollbar-thumb {
+  background: var(--border-bright); border-radius: 99px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 780px) {
+  .plans-modal    { padding: 28px 20px 28px; max-width: 100%; }
+  .plans-grid     { grid-template-columns: 1fr; gap: 12px; }
+  .plan-card      { padding: 20px 18px; }
+}
+@media (min-width: 781px) and (max-width: 1000px) {
+  .plans-modal    { max-width: 760px; }
+  .plan-price .amount { font-size: 28px; }
+}

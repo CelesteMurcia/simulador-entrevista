@@ -1,0 +1,78 @@
+/* ═══════════════════════════════════════════════
+   admin-header.css  –  Shell y navegación admin
+   ═══════════════════════════════════════════════ */
+
+.admin-wrap { min-height: 100vh; background: var(--bg-deep); }
+
+/* ── Header sticky ── */
+.admin-header {
+  position: sticky; top: 0; z-index: 40;
+  background: rgba(18,18,31,0.95);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(14px);
+  padding: 0 28px;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.admin-header-left { display: flex; align-items: center; gap: 0; }
+
+/* ── Brand ── */
+.admin-brand {
+  font-family: var(--font-head); font-size: 16px; font-weight: 800;
+  color: var(--text); letter-spacing: -0.3px;
+  display: flex; align-items: center; gap: 8px;
+  text-decoration: none; padding-right: 20px;
+  border-right: 1px solid var(--border); margin-right: 4px;
+}
+.admin-brand-badge {
+  font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 20px;
+  background: rgba(124,58,237,0.2); border: 1px solid var(--border-glow);
+  color: var(--brand-light); letter-spacing: 1px; text-transform: uppercase;
+}
+
+/* ── Nav tabs ── */
+.admin-nav { display: flex; gap: 2px; padding-left: 8px; }
+.admin-nav a {
+  display: flex; align-items: center; gap: 7px;
+  padding: 7px 14px; border-radius: 8px; font-size: 13px; font-weight: 500;
+  color: var(--text-muted); text-decoration: none;
+  transition: all 0.15s; border: 1px solid transparent;
+  white-space: nowrap;
+}
+.admin-nav a i { font-size: 12px; opacity: 0.7; }
+.admin-nav a:hover {
+  background: var(--bg-glass); color: var(--text); border-color: var(--border);
+}
+.admin-nav a.active {
+  background: rgba(124,58,237,0.12);
+  color: var(--brand-light);
+  border-color: rgba(124,58,237,0.25);
+}
+.admin-nav a.active i { opacity: 1; }
+
+/* ── Header right ── */
+.admin-header-right { display: flex; align-items: center; gap: 8px; }
+
+/* Botón genérico del header (cancelar, salir, juego, nueva entrevista…) */
+.btn-hdr {
+  display: flex; align-items: center; gap: 6px;
+  padding: 7px 14px; border-radius: 10px; font-family: var(--font-body);
+  font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none;
+  border: 1px solid var(--border); color: var(--text-muted);
+  background: var(--bg-glass); transition: all 0.15s; white-space: nowrap;
+}
+.btn-hdr:hover {
+  background: var(--bg-glass-hover); color: var(--text); border-color: var(--border-bright);
+}
+.btn-hdr.primary {
+  background: var(--brand); border-color: var(--brand); color: #fff;
+}
+.btn-hdr.primary:hover { background: var(--brand-dark); }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .admin-nav a span   { display: none; }
+  .admin-brand-badge  { display: none; }
+  .btn-hdr span       { display: none; }
+  .admin-header       { padding: 0 16px; }
+}

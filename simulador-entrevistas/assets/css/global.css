@@ -1,0 +1,119 @@
+:root {
+  --brand: #7c3aed;
+  --brand-dark: #6d28d9;
+  --brand-mid: #8b5cf6;
+  --brand-light: #c4b5fd;
+  --brand-glow: rgba(124, 58, 237, 0.3);
+
+  --accent: #06b6d4;
+  --accent-glow: rgba(6, 182, 212, 0.3);
+  --accent-dark: #0891b2;
+  --accent-light: #67e8f9;
+  --accent2: #4361ee;
+
+  --success: #34d399;
+  --error: #f87171;
+
+  --bg: #1a1a2e;
+  --bg-deep: #12121f;
+  --bg-card: #1e1e35;
+  --bg-card-2: #22223a;
+  --bg-glass: rgba(255, 255, 255, 0.04);
+  --bg-glass-hover: rgba(255, 255, 255, 0.07);
+
+  --border: rgba(139, 92, 246, 0.18);
+  --border-bright: rgba(196, 181, 253, 0.28);
+  --border-glow: rgba(139, 92, 246, 0.45);
+  --border-cyan: rgba(6, 182, 212, 0.35);
+
+  --text: #f0eeff;
+  --text-muted: #a89fd8;
+  --text-subtle: rgba(168, 159, 216, 0.5);
+  --text-dark: #0f0f1a;
+
+  --font-head: 'Cabinet Grotesk', sans-serif;
+  --font-body: 'Instrument Sans', sans-serif;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  --shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 16px 56px rgba(0, 0, 0, 0.5);
+  --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.35);
+  --shadow-cyan: 0 8px 28px rgba(6, 182, 212, 0.3);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg-deep);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.03) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── SECTION HELPERS ─── */
+.section {
+  padding: 5rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.section-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+
+.section-heading h2 {
+  font-family: var(--font-head);
+  font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.5px;
+  margin-bottom: 0.85rem;
+  line-height: 1.2;
+}
+
+.section-heading p {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 580px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+  .footer-bottom {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+}

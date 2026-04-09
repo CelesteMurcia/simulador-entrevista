@@ -1,0 +1,109 @@
+.inspiration-section {
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.inspiration-tag {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--brand), var(--brand-mid));
+  color: #fff; 
+  font-size: 0.78rem; 
+  font-weight: 600;
+  padding: 0.4rem 1rem; 
+  border-radius: 99px; margin-bottom: 2.5rem;
+  box-shadow: 0 4px 18px var(--brand-glow); 
+  letter-spacing: 0.3px;
+}
+
+.inspiration-layout {
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 5rem; 
+  align-items: start;
+}
+
+.inspiration-text h2 {
+  font-family: var(--font-head); 
+  font-size: clamp(1.5rem, 2.8vw, 2.1rem);
+  font-weight: 800; 
+  color: var(--text);
+  letter-spacing: -0.4px;
+  margin-bottom: 1.5rem; 
+  line-height: 1.25;
+}
+
+.inspiration-text p {
+  color: var(--text-muted); 
+  font-size: 0.93rem; 
+  line-height: 1.85; 
+  margin-bottom: 1.1rem;
+}
+
+.inspiration-quote {
+  font-family: var(--font-head); 
+  font-style: italic; 
+  font-weight: 700;
+  font-size: 1.05rem; 
+  color: var(--accent-light);
+  margin-top: 1.75rem; 
+  line-height: 1.55;
+  padding-left: 1.1rem; 
+  border-left: 3px solid var(--accent);
+}
+
+.inspiration-cards { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1rem; 
+}
+
+.inspo-card {
+  background: var(--bg-card); 
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg); 
+  padding: 1.25rem 1.4rem;
+  display: flex; 
+  align-items: center; 
+  gap: 1.1rem; 
+  transition: all 0.25s;
+}
+
+.inspo-card:hover {
+  background: var(--bg-card-2); 
+  border-color: var(--border-bright);
+  transform: translateX(4px); 
+  box-shadow: var(--shadow);
+}
+
+.inspo-dot {
+  width: 44px; 
+  height: 44px; 
+  border-radius: 12px; 
+  flex-shrink: 0;
+  display: flex; 
+  align-items: center; 
+  justify-content: center;
+  font-size: 1.2rem; 
+  border: 1px solid var(--border);
+}
+
+.inspo-card h4 {
+  font-family: var(--font-head); 
+  font-weight: 700;
+  font-size: 0.92rem;
+  margin-bottom: 0.2rem; 
+  color: var(--text);
+}
+
+.inspo-card p { 
+  font-size: 0.81rem; 
+  color: var(--text-muted); 
+  line-height: 1.5; 
+}
+
+@media (max-width: 960px) {
+  .inspiration-layout { 
+    grid-template-columns: 1fr; 
+    gap: 2.5rem; 
+  }
+}
