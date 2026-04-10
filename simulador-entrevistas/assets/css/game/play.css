@@ -61,11 +61,12 @@ html, body {
 /* ── ENTREVISTADOR ─────────────────────────────────────────── */
 .interviewer-wrap {
   position: fixed;
-  bottom: 18%;
+  bottom: -350;
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
-  width: 320px;
+  width: 1100px;
+  height: 900px;
   pointer-events: none;
   /* Sutil balanceo de entrada */
   animation: interviewer-in 0.8s cubic-bezier(0.22,1,0.36,1) both;
@@ -77,14 +78,12 @@ html, body {
 .interviewer-states {
   position: relative;
   width: 100%;
-  height: 440px;
+  height: 100%;
 }
 
 .interviewer-img {
   position: absolute;
   inset: 0;
-  border-radius: 50% 50% 0 0 / 40% 40% 0 0;
-  box-shadow: 0 0 60px rgba(0,0,0,0.8);
   opacity: 0;
   transition: opacity 0.4s ease;
   /* Placeholder hasta tener imágenes reales:
@@ -95,28 +94,48 @@ html, body {
 
 /* Placeholders de color mientras no hay imágenes */
 .interviewer-neutral {
-  background: radial-gradient(ellipse 60% 30% at 50% 8%, #2a1a4e 0%, transparent 70%),
-              linear-gradient(180deg, #1e1e35 0%, #12121f 100%);
+  background-image: url(../../img/interviewer/neutral.png);
+  background-size: cover;
+  background-position: top center;
+
 }
 .interviewer-happy {
-  background: radial-gradient(ellipse 60% 30% at 50% 8%, #1a3a2a 0%, transparent 70%),
-              linear-gradient(180deg, #1a2e20 0%, #0f1f15 100%);
-  /* Tinte verde para "feliz" */
+  background-image: url(../../img/interviewer/feliz.png);
+  background-size: cover;
+  background-position: top center;
 }
 .interviewer-bad {
-  background: radial-gradient(ellipse 60% 30% at 50% 8%, #3a1a1a 0%, transparent 70%),
-              linear-gradient(180deg, #2e1515 0%, #1f0f0f 100%);
-  /* Tinte rojo para "enojado" */
+  background-image: url(../../img/interviewer/serio.png);
+  background-size: cover;
+  background-position: top center;
 }
 
+.interviewer-scared {
+  background-image: url(../../img/interviewer/asustado.png);
+  background-size: cover;
+  background-position: top center;
+}
+
+.interviewer-angry {
+  background-image: url(../../img/interviewer/enojado.png);
+  background-size: cover;
+  background-position: top center;
+}
+
+.interviewer-thinking {
+  background-image: url(../../img/interviewer/pensando.png);
+  background-size: cover;
+  background-position: top center;
+}
 /* ── MANOS ─────────────────────────────────────────────────── */
 .hands-wrap {
   position: fixed;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  z-index: 3;
-  width: 560px;
+  z-index: 5;
+  width: 750px;
+  height: 300px;
   pointer-events: none;
   animation: hands-in 1s cubic-bezier(0.22,1,0.36,1) 0.2s both;
 }
