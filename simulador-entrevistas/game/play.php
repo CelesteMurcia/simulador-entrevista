@@ -111,12 +111,15 @@ $meta = [
       <div class="interviewer-img interviewer-neutral active" id="iv-neutral"></div>
       <div class="interviewer-img interviewer-happy"   id="iv-happy"></div>
       <div class="interviewer-img interviewer-bad"     id="iv-bad"></div>
+      <div class="interviewer-img interviewer-scared"     id="iv-scared"></div>
+      <div class="interviewer-img interviewer-angry"   id="iv-angry"></div>
+      <div class="interviewer-img interviewer-thinking"   id="iv-thinking"></div>
     </div>
   </div>
 
   <!-- ══ MANOS DEL JUGADOR ══ -->
   <div class="hands-wrap">
-    <div class="hands-placeholder hands-<?= $level ?>"></div>
+    <img src="../assets/img/hands/entrelazadas.png" style="width:100%; object-fit:cover; object-position: top center;">
   </div>
 
   <!-- ══ BARRA DE PUNTUACIÓN VERTICAL ══ -->
