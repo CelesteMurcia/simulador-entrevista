@@ -120,13 +120,24 @@ function goToAnswer() {
   document.getElementById('confirm-btn').disabled = false;
   document.getElementById('ai-thinking').style.display = 'none';
 
-  // Limpiar usos restantes del turno anterior
   updateUsesDisplay(currentUsesLeft);
 
   const feedbackEl = document.getElementById('ai-feedback-inline');
   if (feedbackEl) feedbackEl.remove();
 
   setTimeout(() => textarea.focus(), 60);
+
+  // ── Cambiar manos al escribir ──
+  const handsImg = document.getElementById('hands-img');
+  let typingTimer = null;
+
+  textarea.addEventListener('input', () => {
+    if (handsImg) handsImg.src = '../assets/img/hands/explicando.png';
+    clearTimeout(typingTimer);
+    typingTimer = setTimeout(() => {
+      if (handsImg) handsImg.src = '../assets/img/hands/entrelazadas.png';
+    }, 1000);
+  });
 }
 
 // ── ESTADO 3: Mostrar feedback ───────────────────────────────
@@ -206,14 +217,14 @@ function updateUsesDisplay(remaining) {
 
 // ── Expresión del entrevistador ──────────────────────────────
 function setInterviewerMood(quality) {
-  const map = { good: 'iv-happy', neutral: 'iv-neutral', bad: 'iv-bad' };
-  ['iv-neutral', 'iv-happy', 'iv-bad'].forEach(id => {
+  const map = { good: 'iv-happy', neutral: 'iv-neutral', bad: 'iv-bad', scared: 'iv-scared', angry: 'iv-angry', thinking: 'iv-thinking' };
+  ['iv-neutral', 'iv-happy', 'iv-bad', 'iv-scared', 'iv-angry', 'iv-thinking' ].forEach(id => {
     document.getElementById(id)?.classList.remove('active');
   });
   document.getElementById(map[quality] ?? 'iv-neutral')?.classList.add('active');
 
   setTimeout(() => {
-    ['iv-neutral', 'iv-happy', 'iv-bad'].forEach(id =>
+    ['iv-neutral', 'iv-happy', 'iv-bad', 'iv-scared', 'iv-angry', 'iv-thinking'].forEach(id =>
       document.getElementById(id)?.classList.remove('active')
     );
     document.getElementById('iv-neutral')?.classList.add('active');
